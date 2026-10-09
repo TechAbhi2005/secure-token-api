@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import (
     JWTManager,
@@ -65,13 +65,10 @@ with app.app_context():
 
 
 # Home endpoint
+# Home endpoint - display the webpage
 @app.route("/", methods=["GET"])
 def home():
-
-    return jsonify({
-        "message": "SecureToken API is running",
-        "status": "online"
-    })
+    return render_template("index.html")
 
 
 # Register endpoint

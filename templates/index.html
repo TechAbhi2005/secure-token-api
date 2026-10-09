@@ -1,0 +1,384 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050816">
+    <title>SecureTokenAPI | Security Console</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div class="grid-overlay"></div>
+    <div id="particles" aria-hidden="true"></div>
+
+    <header class="topbar">
+        <a class="brand" href="/" aria-label="SecureTokenAPI home">
+            <span class="brand-icon">⬡</span>
+            <span>
+                Secure<span class="gradient-text">TokenAPI</span>
+                <small>IDENTITY &amp; ACCESS CONTROL</small>
+            </span>
+        </a>
+
+        <div class="top-status">
+            <span class="status-dot"></span>
+            SYSTEM READY
+        </div>
+    </header>
+
+    <main class="layout" id="main-layout">
+
+        <!-- LANDING PAGE -->
+        <section class="hero" id="hero-section">
+            <div class="eyebrow">
+                <span class="pulse-dot"></span>
+                NEXT-GENERATION AUTHENTICATION
+            </div>
+
+            <h1>
+                Your identity.<br>
+                <span class="gradient-text">Your security.</span>
+            </h1>
+
+            <p class="hero-description">
+                A smarter way to authenticate. Sign in, receive your JWT
+                access token, and securely access protected resources.
+            </p>
+
+            <div class="feature-list">
+                <div class="feature">
+                    <span class="feature-icon cyan">ϟ</span>
+                    <div>
+                        <strong>Fast Authentication</strong>
+                        <p>Simple and lightweight API access</p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <span class="feature-icon purple">◈</span>
+                    <div>
+                        <strong>Token-Based Security</strong>
+                        <p>JWT-protected endpoints</p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <span class="feature-icon green">✓</span>
+                    <div>
+                        <strong>Secure Credentials</strong>
+                        <p>Password hashing on the server</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="security-note">
+                <span>🔒</span>
+                <span>Your access. Your control. Your security.</span>
+            </div>
+        </section>
+
+        <!-- AUTHENTICATION AREA -->
+        <section class="auth-area">
+
+            <!-- LOGIN -->
+            <section id="login-section" class="glass-card auth-card">
+                <div class="card-top">
+                    <span class="card-symbol">↗</span>
+                    <span class="mini-badge">SECURE LOGIN</span>
+                </div>
+
+                <h2>Welcome back<span class="gradient-text">.</span></h2>
+                <p class="card-description">
+                    Enter your credentials to continue.
+                </p>
+
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">USERNAME</label>
+                        <div class="input-wrap">
+                            <span class="input-icon">♙</span>
+                            <input
+                                id="username"
+                                name="username"
+                                type="text"
+                                placeholder="Your username"
+                                autocomplete="username"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">PASSWORD</label>
+                        <div class="input-wrap">
+                            <span class="input-icon">⌑</span>
+                            <input
+                                id="password"
+                                name="password"
+                                type="password"
+                                placeholder="Your password"
+                                autocomplete="current-password"
+                                required>
+                            <button
+                                type="button"
+                                class="eye-button"
+                                data-target="password"
+                                aria-label="Show or hide password">◉</button>
+                        </div>
+                    </div>
+
+                    <button class="primary-button"
+                            id="login-button" type="submit">
+                        <span>Authenticate securely</span>
+                        <span class="button-arrow">→</span>
+                    </button>
+
+                    <p id="login-message" class="message"
+                       role="status" aria-live="polite"></p>
+                </form>
+
+                <div class="switch-row">
+                    <span>New here?</span>
+                    <button type="button"
+                            id="show-register-button"
+                            class="text-button">
+                        Create account ↗
+                    </button>
+                </div>
+            </section>
+
+            <!-- REGISTER -->
+            <section id="register-section"
+                     class="glass-card auth-card hidden">
+                <div class="card-top">
+                    <span class="card-symbol">✦</span>
+                    <span class="mini-badge green-badge">NEW ACCOUNT</span>
+                </div>
+
+                <h2>Join securely<span class="gradient-text">.</span></h2>
+                <p class="card-description">
+                    Create an account using just two fields.
+                </p>
+
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="register-username">USERNAME</label>
+                        <div class="input-wrap">
+                            <span class="input-icon">♙</span>
+                            <input
+                                id="register-username"
+                                name="username"
+                                type="text"
+                                placeholder="Choose a username"
+                                autocomplete="username"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-password">PASSWORD</label>
+                        <div class="input-wrap">
+                            <span class="input-icon">⌑</span>
+                            <input
+                                id="register-password"
+                                name="password"
+                                type="password"
+                                placeholder="Choose a password"
+                                autocomplete="new-password"
+                                required>
+                            <button
+                                type="button"
+                                class="eye-button"
+                                data-target="register-password"
+                                aria-label="Show or hide password">◉</button>
+                        </div>
+                    </div>
+
+                    <button class="primary-button register-gradient"
+                            id="register-button" type="submit">
+                        <span>Create secure account</span>
+                        <span class="button-arrow">→</span>
+                    </button>
+
+                    <p id="register-message" class="message"
+                       role="status" aria-live="polite"></p>
+                </form>
+
+                <div class="switch-row">
+                    <span>Already registered?</span>
+                    <button type="button"
+                            id="show-login-button"
+                            class="text-button">
+                        Back to login ↗
+                    </button>
+                </div>
+            </section>
+
+            <!-- DASHBOARD -->
+            <section id="dashboard" class="dashboard hidden">
+
+                <!-- Dashboard heading -->
+                <div class="glass-card dashboard-header">
+                    <div>
+                        <div class="mini-badge green-badge">
+                            <span class="status-dot"></span>
+                            SESSION ACTIVE
+                        </div>
+
+                        <h2>
+                            Security console<span class="gradient-text">.</span>
+                        </h2>
+
+                        <p class="card-description">
+                            Signed in as
+                            <strong id="user-label"></strong>
+                        </p>
+                    </div>
+
+                    <button id="logout-button"
+                            type="button"
+                            class="outline-button">
+                        Logout ↗
+                    </button>
+                </div>
+
+                <!-- Summary cards -->
+                <div class="stats-grid">
+
+                    <div class="glass-card stat-card">
+                        <div class="stat-top">
+                            <span class="stat-icon cyan">◈</span>
+                            <span class="stat-label">AUTHENTICATION</span>
+                        </div>
+                        <h3 class="stat-value" id="stat-auth-status">
+                            Active
+                        </h3>
+                        <p class="stat-description">
+                            Current browser session
+                        </p>
+                        <div class="stat-line cyan-line"></div>
+                    </div>
+
+                    <div class="glass-card stat-card">
+                        <div class="stat-top">
+                            <span class="stat-icon purple">⌑</span>
+                            <span class="stat-label">ACCESS TOKEN</span>
+                        </div>
+                        <h3 class="stat-value">JWT</h3>
+                        <p class="stat-description" id="stat-expiry">
+                            Expiry is managed by the server
+                        </p>
+                        <div class="stat-line purple-line"></div>
+                    </div>
+
+                    <div class="glass-card stat-card">
+                        <div class="stat-top">
+                            <span class="stat-icon green">✓</span>
+                            <span class="stat-label">PROTECTED API</span>
+                        </div>
+                        <h3 class="stat-value" id="stat-api-status">
+                            Ready
+                        </h3>
+                        <p class="stat-description">
+                            JWT-protected endpoint
+                        </p>
+                        <div class="stat-line green-line"></div>
+                    </div>
+
+                </div>
+
+                <!-- JWT TOKEN -->
+                <div class="glass-card token-card">
+                    <div class="section-heading">
+                        <span class="feature-icon purple">◈</span>
+                        <div>
+                            <h3>JWT access token</h3>
+                            <p>
+                                Your credential for protected API requests.
+                            </p>
+                        </div>
+                    </div>
+
+                    <textarea id="token-display"
+                              rows="4"
+                              readonly
+                              aria-label="JWT access token"
+                              placeholder="Your JWT will appear here"></textarea>
+
+                    <div class="token-actions">
+                        <span id="token-expiry" class="small-text">
+                            No active token
+                        </span>
+
+                        <button id="copy-token"
+                                type="button"
+                                class="outline-button">
+                            ▣ Copy token
+                        </button>
+                    </div>
+
+                    <p class="small-text warning-text">
+                        Never share your access token with anyone.
+                    </p>
+                </div>
+
+                <!-- PROTECTED RESOURCE -->
+                <div class="glass-card resource-card">
+                    <div class="section-heading">
+                        <span class="feature-icon cyan">⌘</span>
+                        <div>
+                            <h3>Protected resource</h3>
+                            <p>
+                                Test a request using your Bearer token.
+                            </p>
+                        </div>
+                    </div>
+
+                    <button id="protected-button"
+                            type="button"
+                            class="primary-button">
+                        <span>Test protected endpoint</span>
+                        <span class="button-arrow">→</span>
+                    </button>
+
+                    <pre id="protected-result"
+                         class="result-box hidden"
+                         aria-live="polite"></pre>
+                </div>
+
+                <!-- ACTIVITY HISTORY -->
+                <div class="glass-card activity-card">
+                    <div class="section-heading">
+                        <span class="feature-icon green">≋</span>
+                        <div>
+                            <h3>Activity timeline</h3>
+                            <p>Recent actions in this browser session.</p>
+                        </div>
+                    </div>
+
+                    <ul id="activity-list" class="activity-list"></ul>
+                </div>
+
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <span>SECURETOKENAPI</span>
+        <span>FLASK + JWT AUTHENTICATION</span>
+        <span><span class="status-dot"></span> SECURITY FIRST</span>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"
+            defer></script>
+</body>
+</html>
